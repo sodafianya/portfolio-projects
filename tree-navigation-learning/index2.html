@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        a[href*="index2.html"] {
+          color: #f1f1f1;
+        }
+      </style>
+</head>
+<body>
+    <!-- Side navigation -->
+    <div class="sidenav">
+        <p></p>
+        <a href="index.html" class="my-text">Что такое <b>DOM</b>? Как он используется?</a>
+        <a href="index2.html">Объясните назначение и дайте пример использования свойства <b>firstElementChild</b></a>
+  </div>
+  
+  <!-- Page content -->
+  <div class="main">
+    <main>
+        <h1>Свойство firstElementChild</h1>
+
+        <p>Свойство <code><span class="highlight">firstElementChild</span></code> в JavaScript позволяет получить ссылку на первый дочерний элемент (элемент внутри) указанного HTML-элемента.</p>
+
+        <div>
+            <p><strong>Пример:</strong></p>
+            <p>Представьте, что у вас есть следующий HTML-код:</p>
+            <div class="code-block">
+                <pre>
+        &lt;div id="myDiv"&gt;
+        &lt;p&gt;Первый  параграф&lt;/p&gt;
+        &lt;span&gt;Второй  элемент&lt;/span&gt;
+        &lt;p&gt;Третий  параграф&lt;/p&gt;
+        &lt;/div&gt;
+                </pre>
+            </div>
+
+            <p>Представьте, что у вас есть следующий HTML-код:</p>
+
+            <p>В этом примере <code><span class="highlight">div</span></code> с идентификатором <code><span class="highlight">myDiv</span></code> имеет три дочерних элемента: два параграфа (<code><span class="highlight">p</span></code>) и один элемент <code><span class="highlight">span</span></code>.</p>
+        </div>
+
+        <div>
+            <p><strong>Использование <code><span class="highlight">firstElementChild</span></code></strong></p>
+            <div class="code-block">
+                <pre>
+        const showFirstChildButton = document.getElementById("showFirstChild");
+        const resultParagraph = document.getElementById("result"); 
+        showFirstChildButton.addEventListener("click", function() {
+            const myDiv = document.getElementById("myDiv");
+            const firstChild = myDiv.firstElementChild; 
+            resultParagraph.textContent = `Первый дочерний элемент: ${firstChild.textContent}`; // Выводим текст первого дочернего элемента
+        });
+                </pre>
+            </div>
+
+            <p><b>Пример:</b></p>
+            <div id="myDiv">
+                <p>Первый параграф</p><span>Второй элемент</span><p>Третий параграф</p>
+              </div>
+
+              <button id="showFirstChild">Показать первый дочерний элемент</button>
+
+              <p id="result"></p> 
+
+            <p><b>В этом коде:</b></p>
+        
+            <p>Находим элементы:</p>
+
+            <ul>
+            <li><code><span class="highlight">document.getElementById()</span></code> ищет элементы HTML по их ID (идентификаторам).</li>
+            <li><code><span class="highlight">showFirstChildButton</span></code> - это кнопка.</li>
+            <li><code><span class="highlight">resultParagraph</span></code> - это параграф, куда будет выводиться информация.</li>
+            <li><code><span class="highlight">myDiv</span></code> - это контейнер (div), содержащий другие элементы.</li>
+            </ul>
+
+            <p>Обрабатываем нажатие на кнопку:</p>
+
+            <ul>
+            <li><code><span class="highlight">addEventListener("click", function() { ... });</span></code> прикрепляет функцию к событию нажатия на кнопку.</li>
+            <li>Когда пользователь кликает по кнопке, функция запускается.</li>
+            </ul>
+
+            <p>Получаем информацию:</p>
+
+            <ul>
+            <li><code><span class="highlight">firstChild = myDiv.firstElementChild;</span></code> получает первый дочерний элемент <code><span class="highlight">myDiv</span></code>.</li>
+            <li><code><span class="highlight">firstChild.textContent</span></code> получает текст из этого первого дочернего элемента.</li>
+            </ul>
+
+            <p>Выводим информацию:</p>
+
+            <ul>
+                <li><code><span class="highlight">resultParagraph.textContent = ...;</span></code> устанавливает новый текст в параграф <code><span class="highlight">resultParagraph</span></code>, используя текст, который был получен из <code><span class="highlight">firstChild</span></code>.</li>
+            </ul>
+        </div>
+
+        <div>
+            <p><strong>Важно отметить:</strong></p>
+            <ol>
+                <li><p><code><span class="highlight">firstElementChild</span></code> возвращает <strong>null</strong>, если у элемента нет дочерних элементов.</p></li>
+                <li><p><code><span class="highlight">firstElementChild</span></code> возвращает <strong>ссылку</strong> на первый дочерний элемент, а не текстовое содержание элемента.</p></li>
+            </ol>
+        </div>
+
+        <div>
+            <p><strong>Примеры использования <code><span class="highlight">firstElementChild</span></code>:</strong></p>
+            <ol>
+                <li>
+                    <p>Изменение стиля первого дочернего элемента:</p>
+                    <div class="code-block">
+                    <pre>
+        const changeColorButton = document.getElementById("changeColor");
+        changeColorButton.addEventListener("click", function() {
+            const myDivv = document.getElementById("myDivv");
+            const firstChild = myDivv.firstElementChild; 
+            firstChild.style.color = "blue"; 
+        });
+                    </pre>
+                    </div>
+                    <div>
+                        <p><b>Пример:</b></p>
+                        <div id="myDivv">
+                            <p>Первый параграф</p>
+                            <span>Второй элемент</span>
+                            <p>Третий параграф</p>
+                        </div>
+                    
+                        <button id="changeColor">Изменить цвет первого элемента</button>
+                    </div>
+                </li>
+                <li>
+                    <p>Добавление текста в первый дочерний элемент:</p>
+                    <div class="code-block">
+                        <pre>
+        const changeTextButton = document.getElementById("changeText");
+        changeTextButton.addEventListener("click", function() {
+            const myDivvv = document.getElementById("myDivvv");
+            const firstChild = myDivvv.firstElementChild;
+            firstChild.textContent += " (Измененный текст)"; // Добавляем текст 
+        });
+                        </pre>
+                    </div>
+                    <div>
+                        <p><b>Пример:</b></p>
+                        <div id="myDivvv">
+                            <p>Первый параграф</p>
+                            <span>Второй элемент</span>
+                            <p>Третий параграф</p>
+                        </div>
+                    
+                        <button id="changeText">Добавить текст к первому элементу</button>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        <div>
+            <p><strong>Использование <code><span class="highlight">firstElementChild</span></code> позволяет управлять первым дочерним элементом HTML-элемента с помощью JavaScript, что делает веб-страницы более динамичными и интерактивными.</strong></p>
+        </div>
+    
+
+    </main>
+
+  </div>
+
+  <script>
+    const showFirstChildButton = document.getElementById("showFirstChild");
+    const resultParagraph = document.getElementById("result"); 
+    showFirstChildButton.addEventListener("click", function() {
+        const myDiv = document.getElementById("myDiv");
+        const firstChild = myDiv.firstElementChild; 
+        resultParagraph.textContent = `Первый дочерний элемент: ${firstChild.textContent}`; // Выводим текст первого дочернего элемента
+    });
+
+    const changeColorButton = document.getElementById("changeColor");
+        changeColorButton.addEventListener("click", function() {
+            const myDivv = document.getElementById("myDivv");
+            const firstChild = myDivv.firstElementChild; 
+            firstChild.style.color = "blue"; 
+        });
+
+    const changeTextButton = document.getElementById("changeText");
+    changeTextButton.addEventListener("click", function() {
+        const myDivvv = document.getElementById("myDivvv");
+        const firstChild = myDivvv.firstElementChild;
+        firstChild.textContent += " (Измененный текст)"; // Добавляем текст 
+    });
+  </script>
+</body>
+</html>
+

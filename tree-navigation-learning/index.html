@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        a[href*="index.html"] {
+          color: #f1f1f1;
+        }
+      </style>
+</head>
+<body>
+    <div class="sidenav">
+        <p></p>
+        <a href="index.html" class="my-text">Что такое <b>DOM</b>? Как он используется?</a>
+        <a href="index2.html">Объясните назначение и дайте пример использования свойства <b>firstElementChild</b></a>
+  </div>
+  
+  <div class="main">
+    <main>
+        <div>
+            <h1>DOM: Документная модель объекта</h1>
+        </div>
+
+        <div>
+            <p><strong>Представим HTML как дерево:</strong></p>
+            <ol>
+                <li>Корень дерева — элемент <code>&lt;html&gt;</code>.</li>
+                <li>Ветки — элементы HTML (например, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;img&gt;</code> и т.д.).</li>
+                <li>Листья — текстовые узлы (текст внутри элементов).</li>
+            </ol>
+
+            <img src="https://i.pinimg.com/736x/37/0b/58/370b582a708db25da38234d92e59cba2.jpg" alt="tree">
+
+        </div>
+
+        <div>
+            <p><strong>DOM превращает это дерево в иерархическую структуру объектов:</strong></p>
+            <ol>
+                <li>Каждый элемент HTML представлен в виде объекта с собственными свойствами и методами.</li>
+                <li>Свойства объектов DOM хранят информацию об элементе, например, его имя тега, атрибуты и текстовое содержание.</li>
+                <li>Методы объектов DOM позволяют изменять элемент, например, добавлять или удалять элементы, изменять их стили, атрибуты и текст.</li>
+            </ol>
+        </div>
+
+        <div>
+        <p><strong>Как используется DOM:</strong></p>
+            <ol>
+                <li><strong>Доступ к элементам HTML:</strong> JavaScript может получить доступ к любому элементу HTML через DOM.</li>
+                <li><strong>Изменение содержимого страницы:</strong> С помощью DOM можно добавлять, удалять и изменять элементы HTML.</li>
+                <li><strong>Изменение стилей элементов:</strong> JavaScript может изменять CSS-стили элементов через DOM.</li>
+                <li><strong>Обработка событий:</strong> DOM позволяет обрабатывать события пользователя, такие как нажатие на кнопку, наведение курсора и т.д.</li>
+            </ol>
+        </div>
+
+
+        <div>
+            <p><strong>Примеры использования DOM:</strong></p>
+
+            <ol>
+                <li><p><strong>Изменение текста элемента:</strong></p>
+                    <div class="code-block">
+                    <pre>
+    document.getElementById("change-button").addEventListener("click", function() {
+        document.getElementById("text-to-change").innerHTML = "Текст изменен!";
+    });
+                    </pre>
+                    </div>
+                    <div>
+                        <p><strong>Пример: Изменение текста</strong></p>
+                        <p id="text-to-change">Этот текст можно изменить!</p>
+                        <button id="change-button">Изменить текст</button>
+                    </div>
+                </li>
+                <li><p><strong>Добавление нового элемента:</strong></p>
+                    <div class="code-block">
+                    <pre>
+    document.getElementById("add-item-button").addEventListener("click", function() {
+        let list = document.getElementById("list");
+        let newListItem = document.createElement("li");
+        newListItem.textContent = "Новый пункт";
+        list.appendChild(newListItem);
+    }); 
+                    </pre>
+                    </div>
+                    <div>
+                        <p><strong>Пример: Добавление элемента</strong></p>
+                        <ul id="list"></ul>
+                        <button id="add-item-button">Добавить пункт</button>
+                    </div>
+                </li>
+                <li><p><strong>Удаление элемента:</strong></p>
+                    <div class="code-block">
+                    <pre>
+    document.getElementById("remove-button").addEventListener("click", function() {
+        document.getElementById("text-to-remove").remove();
+    });
+                    </pre>
+                    </div>
+                    <div>
+                        <p><strong>Пример: Удаление элемента</strong></p>
+                        <p id="text-to-remove">Этот текст можно удалить.</p>
+                        <button id="remove-button">Удалить текст</button>
+                    </div>
+                </li>
+                <li><p><strong>Обработка события клик:</strong></p>
+                    <div class="code-block">
+                    <pre>
+    const button = document.getElementById("myButton");
+    button.addEventListener("click", function() {
+        alert("Кликнули на кнопку!");
+    });
+                    </pre>
+                    </div>
+                    <div>
+                        <p><strong>Пример: Обработка события клика</strong></p>
+                        <button id="myButton">Нажмите на меня!</button>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div id="popup">
+            <div class="popup-content">
+              <h2>Всем привет!</h2>
+              <p>Это работа, в которой я впервые узучала древовидную навигацию</p>
+              <img src="https://i.pinimg.com/736x/6c/ae/21/6cae212207845044d2c36cc40856f3cc.jpg" alt="ping" width="300px" height="440px">
+              <button id="close-popup">Закрыть</button>
+            </div>
+          </div>
+          <script src="script.js"></script>
+    </main>
+
+  </div>
+
+  <script>
+   document.getElementById("change-button").addEventListener("click", function() {
+     document.getElementById("text-to-change").innerHTML = "Текст изменен!";
+   });
+
+
+document.getElementById("add-item-button").addEventListener("click", function() {
+    let list = document.getElementById("list");
+    let newListItem = document.createElement("li");
+    newListItem.textContent = "Новый пункт";
+    list.appendChild(newListItem);
+  });
+  
+
+document.getElementById("remove-button").addEventListener("click", function() {
+  document.getElementById("text-to-remove").remove();
+});
+
+
+const button = document.getElementById("myButton");
+button.addEventListener("click", function() {
+  alert("Кликнули на кнопку!");
+});
+  </script>
+</body>
+</html>
